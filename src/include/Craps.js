@@ -2,6 +2,10 @@ class Bet {
   constructor(value, type) {
     this.value = value;
     this.type = type;
+    this.remove = false;
+  }
+  removeBet() {
+    this.remove = true;
   }
 }
 
@@ -10,7 +14,7 @@ class Craps {
   constructor() {
     this.app_state = {
       "point": null,
-      "bank": 0,
+      "bank": 100,
       "bets": [],
       "lastRoll": null,
       "rolls": [],
@@ -39,25 +43,29 @@ class Craps {
     this.app_state.lastRoll = roll[0] + roll[1];
     let sum = roll[0] + roll[1];
     this.app_state.message = "You rolled a " + sum;
-    //console.log("Player rolled a " + this.app_state.lastRoll);
     this.payoutBets();
-    //console.log("The current point is " + this.app_state.point);
-    //this.movePoint();
-    //this.payoutBets();
     return this.app_state;
   }
-  movePoint() {
+  sweepBets() {
+    let x = this.app_state.bets.length;
+    while (x--) {
+
+      if (this.app_state.bets[x].remove) {
+        this.app_state.bank += this.app_state.bets[x].value;
+        this.app_state.bets.splice(x, 1);
+      }
+
+    }
+  }
+  updateBoard() {
     if (this.app_state.point) {
       if (this.app_state.lastRoll === 7) {
-        console.log("7 out!");
         this.app_state.point = null;
       } else if (this.app_state.lastRoll === this.app_state.point) {
-        console.log("Point made");
         this.app_state.point = null;
       }
     } else {
       let lastRoll = this.app_state.lastRoll;
-
       switch (lastRoll) {
         case 7:
         break;
@@ -73,36 +81,47 @@ class Craps {
           // numbers that can make points
           this.app_state.point = lastRoll;
       }
-
     }
-
   }
   payoutBets() {
-    console.log("bets on the table: " + this.app_state.bets.length)
-    for (let x = 0; x < this.app_state.bets.length; x++) {
-      //let bet = this.bets[x];
+    let x = this.app_state.bets.length;
+
+    while (x--) {
       if (this.app_state.point) {
-        // point established
+        // POINT ESTABLISHED
+
         if (this.app_state.lastRoll === 7) {
           if (this.app_state.bets[x].type === "passline") {
-            this.app_state.bets.splice(x, 1);
+            this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
+          }
+        }
+        if (this.app_state.lastRoll === this.app_state.point) {
+          console.log("im here now point made");
+          if (this.app_state.bets[x].type === "passline") {
+            this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
+            this.app_state.bets[x].removeBet();
           }
         }
       } else {
-        // come out roll
-        if (this.app_state.lastRoll === 7) {
+        // COME OUT ROLL
+        if (this.app_state.lastRoll === 7 || this.app_state.lastRoll === 11) {
           if (this.app_state.bets[x].type === "passline") {
-            this.app_state.bank += this.app_state.bets[x].value * 2;
-            this.app_state.bets.splice(x, 1);
+            this.app_state.bets[x].value = this.app_state.bets[x].value *2;
+            this.app_state.bets[x].removeBet();
+          }
+        }
+        if (this.app_state.lastRoll === 2 || this.app_state.lastRoll === 3 || this.app_state.lastRoll === 12) {
+          if (this.app_state.bets[x].type === "passline") {
+            this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
           }
         }
       }
     }
-    console.log("The current bank is: " + this.app_state.bank);
-    this.movePoint();
+    this.sweepBets();
+    this.updateBoard();
   }
 }
-
-
 
 export default Craps
