@@ -18,7 +18,7 @@ class Craps {
       "bets": [],
       "lastRoll": null,
       "rolls": [],
-      "message": ""
+      "messages": []
     }
   }
   getState() {
@@ -42,7 +42,7 @@ class Craps {
     this.app_state.rolls.push(roll);
     this.app_state.lastRoll = roll[0] + roll[1];
     let sum = roll[0] + roll[1];
-    this.app_state.message = "You rolled a " + sum;
+    this.app_state.messages.push("You rolled a " + sum);
     this.payoutBets();
     return this.app_state;
   }

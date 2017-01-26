@@ -8,6 +8,7 @@ import Passline from './Passline.js';
 import Nopassline from './Nopassline.js';
 import BetTable from './BetTable.js';
 import Points from './Points.js';
+import Dice from './Dice.js';
 //let craps = new Craps();
 
 class App extends Component {
@@ -25,18 +26,21 @@ class App extends Component {
     this.rollDice = this.rollDice.bind(this);
     this.clickedPassline = this.clickedPassline.bind(this);
     this.passBack = this.passBack.bind(this);
+    this.getRoll = this.getRoll.bind(this);
   }
   render() {
     return (
       <div className="App">
-        <Dashboard bank={this.state.craps.bank} />
-        <Points />
+
+        <Points point={this.state.craps.point} />
         <Nopassline />
         <Passline clickedPassline={this.clickedPassline} />
+        <Dice roll={this.getRoll}/>
+        <button onClick={ this.rollDice }>Roll Dice</button>
+        <Dashboard bank={this.state.craps.bank} />
         <input type="text" onChange={this.inputChange} />
         <button onClick={ this.addFunds }>Add Funds</button>
-        <button onClick={ this.rollDice }>Roll Dice</button>
-        <Messages message={this.state.craps.message} point={this.state.craps.point}/>
+        <Messages messages={this.state.craps.messages} />
         <BetTable bets={this.state.craps.bets}/>
       </div>
     );
@@ -60,6 +64,13 @@ class App extends Component {
   }
   clickedPassline() {
     this.setState(this.craps.placeBet(5, "passline"));
+  }
+  getRoll() {
+    if (this.state.craps.rolls.length > 0) {
+      return this.state.craps.rolls[this.state.craps.rolls.length -1];
+    } else {
+      return null;
+    }
   }
 }
 

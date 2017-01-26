@@ -1,0 +1,12 @@
+.message-ul {
+  list-style-type: none;
+  font-size: 8px;
+  border: 1px solid #eeeeee;
+}
+.message-ul li {
+  margin: 0;
+}
+.message-div {
+  height: 50px;
+  overflow-y: scroll;
+}

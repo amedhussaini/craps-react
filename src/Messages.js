@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import './Messages.css';
 
 class Messages extends Component {
   render() {
+    let message = this.props.messages.reverse();
+    let messageList = message.map(function(message) {
+      return (
+        <li>{message}</li>
+      )
+    });
+
     return (
-      <div>
-        <p>Message: {this.props.message}</p>
-        <p>Point: {this.props.point}</p>
+      <div className="message-div">
+        <ul className="message-ul">
+          {messageList}
+        </ul>
+
       </div>
     )
   }

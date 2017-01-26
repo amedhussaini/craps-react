@@ -4,7 +4,16 @@
   width: 16.66%;
   font-size: 26px;
   color: yellow;
-  border: 1px solid #ffffff;
-  background-color: green;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
   height: 50px;
+}
+.on {
+  background-color: #66CE66;
+  border-bottom: 5px solid #ffffff;
+}
+.off {
+  background-color: #229C22;
+  border-bottom: 1px solid #ffffff;
 }
