@@ -90,33 +90,67 @@ class Craps {
       if (this.app_state.point) {
         // POINT ESTABLISHED
 
+        // WINNER 7
         if (this.app_state.lastRoll === 7) {
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = 0;
             this.app_state.bets[x].removeBet();
           }
         }
+        // POINT MADE
         if (this.app_state.lastRoll === this.app_state.point) {
-          console.log("im here now point made");
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
             this.app_state.bets[x].removeBet();
           }
         }
+        // FIELD BET
+        if (this.app_state.bets[x].type === "field") {
+          if (this.app_state.lastRoll === 5 || this.app_state.lastRoll === 6 || this.app_state.lastRoll === 7 || this.app_state.lastRoll === 8 ) {
+            // field bet loses
+            this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
+            this.app_state.messages.push("Field loses!");
+          } else {
+            // field bet wins
+            this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
+            this.app_state.bets[x].removeBet();
+            this.app_state.messages.push("Field wins!");
+          }
+        }
       } else {
         // COME OUT ROLL
+
+        // WINNER 7/11
         if (this.app_state.lastRoll === 7 || this.app_state.lastRoll === 11) {
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = this.app_state.bets[x].value *2;
             this.app_state.bets[x].removeBet();
           }
         }
+        // CRAPS LOSER
         if (this.app_state.lastRoll === 2 || this.app_state.lastRoll === 3 || this.app_state.lastRoll === 12) {
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = 0;
             this.app_state.bets[x].removeBet();
           }
         }
+
+        // FIELD BET
+        if (this.app_state.bets[x].type === "field") {
+          if (this.app_state.lastRoll === 5 || this.app_state.lastRoll === 6 || this.app_state.lastRoll === 7 || this.app_state.lastRoll === 8 ) {
+            // field bet loses
+            this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
+            this.app_state.messages.push("Field loses!");
+          } else {
+            // field bet wins
+            this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
+            this.app_state.bets[x].removeBet();
+            this.app_state.messages.push("Field wins!");
+          }
+        }
+
       }
     }
     this.sweepBets();

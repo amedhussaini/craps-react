@@ -5,7 +5,7 @@ class BetTable extends Component {
 render() {
 
   let bets = this.props.bets;
-  let betsList = bets.map(function(name, index) {
+  let betsList = bets.map((name, index) => {
     return (
       <tr key={index}><td>{name.type}</td><td>{name.value}</td></tr>
     )

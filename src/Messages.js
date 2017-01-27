@@ -4,9 +4,9 @@ import './Messages.css';
 class Messages extends Component {
   render() {
     let message = this.props.messages.reverse();
-    let messageList = message.map(function(message) {
+    let messageList = message.map((message, index) => {
       return (
-        <li>{message}</li>
+        <li key={index}>{message}</li>
       )
     });
 
