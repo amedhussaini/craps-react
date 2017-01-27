@@ -29,9 +29,21 @@ class Craps {
     return this.app_state;
   }
   placeBet(value, type) {
-    let bet = new Bet(value, type);
-    this.app_state.bets.push(bet);
-    this.app_state.bank -= value;
+    let addNewBet = true;
+    for (let x = 0; x < this.app_state.bets.length; x++) {
+      if (this.app_state.bets[x].type === type) {
+        this.app_state.bets[x].value += value;
+        this.app_state.bank -= value;
+        addNewBet = false;
+        break;
+      }
+    }
+    if (addNewBet) {
+      let bet = new Bet(value, type);
+      this.app_state.bets.push(bet);
+      this.app_state.bank -= value;
+    }
+
     return this.app_state;
   }
   roll() {
