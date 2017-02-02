@@ -9,7 +9,7 @@ class Passline extends Component {
 
   render() {
     return (
-      <div className="passline" onClick={this.clickedPassline}>PASS LINE</div>
+      <div className="passline" onClick={ this.clickedPassline }>PASS LINE</div>
     )
   }
   clickedPassline() {

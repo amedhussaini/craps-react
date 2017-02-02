@@ -102,10 +102,14 @@ class Craps {
       if (this.app_state.point) {
         // POINT ESTABLISHED
 
-        // WINNER 7
+        // 7 OUT
         if (this.app_state.lastRoll === 7) {
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
+          }
+          if (this.app_state.bets[x].type === "dontpass") {
+            this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
             this.app_state.bets[x].removeBet();
           }
         }
@@ -113,6 +117,10 @@ class Craps {
         if (this.app_state.lastRoll === this.app_state.point) {
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
+            this.app_state.bets[x].removeBet();
+          }
+          if (this.app_state.bets[x].type === "dontpass") {
+            this.app_state.bets[x].value = 0;
             this.app_state.bets[x].removeBet();
           }
         }
@@ -139,11 +147,19 @@ class Craps {
             this.app_state.bets[x].value = this.app_state.bets[x].value *2;
             this.app_state.bets[x].removeBet();
           }
+          if (this.app_state.bets[x].type === "dontpass") {
+            this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
+          }
         }
         // CRAPS LOSER
         if (this.app_state.lastRoll === 2 || this.app_state.lastRoll === 3 || this.app_state.lastRoll === 12) {
           if (this.app_state.bets[x].type === "passline") {
             this.app_state.bets[x].value = 0;
+            this.app_state.bets[x].removeBet();
+          }
+          if (this.app_state.bets[x].type === "dontpass") {
+            this.app_state.bets[x].value = this.app_state.bets[x].value * 2;
             this.app_state.bets[x].removeBet();
           }
         }

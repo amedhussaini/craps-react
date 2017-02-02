@@ -30,6 +30,7 @@ class App extends Component {
     this.getBank = this.getBank.bind(this);
     this.rollDice = this.rollDice.bind(this);
     this.clickedPassline = this.clickedPassline.bind(this);
+    this.clickedDontpassline = this.clickedDontpassline.bind(this);
     this.clickedField = this.clickedField.bind(this);
     this.getRoll = this.getRoll.bind(this);
   }
@@ -46,7 +47,7 @@ class App extends Component {
           <Points point={ this.state.craps.point } />
           <Come />
           <Field clickedField={ this.clickedField }/>
-          <Nopassline />
+          <Nopassline clickedDontpassline={ this.clickedDontpassline }/>
           <Passline clickedPassline={ this.clickedPassline } />
           <Dice roll={ this.getRoll }/>
 
@@ -72,6 +73,9 @@ class App extends Component {
   }
   clickedPassline() {
     this.setState(this.craps.placeBet(5, "passline"));
+  }
+  clickedDontpassline() {
+    this.setState(this.craps.placeBet(5, "dontpass"));
   }
   clickedField() {
     this.setState(this.craps.placeBet(5, "field"));
