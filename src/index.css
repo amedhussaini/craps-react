@@ -3,3 +3,6 @@ div {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+#root {
+  height: 100vh;
+}

@@ -1,13 +1,17 @@
+.points {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+  -webkit-flex: 1
+}
 .points > div {
   text-align: center;
-  display: inline-block;
-  width: 16.66%;
-  font-size: 26px;
-  color: yellow;
+  -webkit-flex: 1;
+        flex: 1;
   border-top: 1px solid #ffffff;
   border-left: 1px solid #ffffff;
   border-right: 1px solid #ffffff;
-  height: 50px;
 }
 .on {
   background-color: #66CE66;
@@ -16,4 +20,8 @@
 .off {
   background-color: #229C22;
   border-bottom: 1px solid #ffffff;
+}
+.number {
+  font-size: 26px;
+  color: yellow;
 }

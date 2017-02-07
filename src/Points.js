@@ -9,12 +9,12 @@ class Points extends Component {
   render() {
     return (
       <div className="points">
-        <div className={this.isPoint(4)}>4</div>
-        <div className={this.isPoint(5)}>5</div>
-        <div className={this.isPoint(6)}>6</div>
-        <div className={this.isPoint(8)}>8</div>
-        <div className={this.isPoint(9)}>9</div>
-        <div className={this.isPoint(10)}>10</div>
+        <div className={this.isPoint(4)}><div>Buy Lay</div><p className="number">4</p><div>Place</div></div>
+        <div className={this.isPoint(5)}><div>Buy Lay</div><p className="number">5</p><div>Place</div></div>
+        <div className={this.isPoint(6)}><div>Buy Lay</div><p className="number">6</p><div>Place</div></div>
+        <div className={this.isPoint(8)}><div>Buy Lay</div><p className="number">8</p><div>Place</div></div>
+        <div className={this.isPoint(9)}><div>Buy Lay</div><p className="number">9</p><div>Place</div></div>
+        <div className={this.isPoint(10)}><div>Buy Lay</div><p className="number">10</p><div>Place</div></div>
       </div>
     )
   }
