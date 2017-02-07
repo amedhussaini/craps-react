@@ -3,4 +3,7 @@
   border: 1px solid #ffffff;
   background-color: green;
   color: white;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
 }

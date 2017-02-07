@@ -18,7 +18,12 @@ class Dice extends Component {
           </div>
         )
       } else {
-        return null;
+        return (
+          <div>
+          <span className="dice">{String.fromCharCode(9856)}</span>
+          <span className="dice">{String.fromCharCode(9856)}</span>
+          </div>
+        )
       }
 
   }

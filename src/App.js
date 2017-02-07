@@ -38,10 +38,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="left-container">
-          <button onClick={ this.rollDice }>Roll Dice</button>
           <Dashboard bank={ this.state.craps.bank } />
           <input type="text" onChange={ this.inputChange } />
           <button onClick={ this.addFunds }>Add Funds</button>
+          <Dice roll={ this.getRoll }/>
+          <button onClick={ this.rollDice }>Roll Dice</button>
+          <BetTable bets={ this.state.craps.bets }/>
+          <Messages messages={ this.state.craps.messages } />
         </div>
         <div className="right-container">
           <Points point={ this.state.craps.point } />
@@ -49,10 +52,9 @@ class App extends Component {
           <Field clickedField={ this.clickedField }/>
           <Nopassline clickedDontpassline={ this.clickedDontpassline }/>
           <Passline clickedPassline={ this.clickedPassline } />
-          <Dice roll={ this.getRoll }/>
 
-          <Messages messages={ this.state.craps.messages } />
-          <BetTable bets={ this.state.craps.bets }/>
+
+
         </div>
       </div>
     );

@@ -1,4 +1,7 @@
 .dice {
     line-height: 0.5;
     font-size: 60px;
+    -moz-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
 }

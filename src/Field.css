@@ -1,3 +1,6 @@
 .field {
   background-color: blue;
+  -moz-flex: 2;
+  -webkit-flex: 2;
+  flex: 2 ;
 }

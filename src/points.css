@@ -2,16 +2,57 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  flex: 1;
-  -webkit-flex: 1
+  flex: 2;
+  -webkit-flex: 2;
+  -moz-flex: 2;
 }
 .points > div {
   text-align: center;
+  -moz-flex: 1;
   -webkit-flex: 1;
         flex: 1;
-  border-top: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-right: 1px solid #ffffff;
+}
+.number {
+  font-size: 26px;
+  color: yellow;
+}
+.point {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-direction: column;
+}
+.point > div {
+
+}
+.point-top {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+        flex: 1;
+
+}
+.point-top > div {
+  border: 2px solid #ffffff;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+        flex: 1;
+}
+.point-bottom {
+  border: 2px solid #ffffff;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+        flex: 1;
+}
+.point-middle {
+  border: 2px solid #ffffff;
+  -moz-flex: 2;
+  -webkit-flex: 2;
+        flex: 2;
 }
 .on {
   background-color: #66CE66;
@@ -20,8 +61,4 @@
 .off {
   background-color: #229C22;
   border-bottom: 1px solid #ffffff;
-}
-.number {
-  font-size: 26px;
-  color: yellow;
 }
