@@ -1,0 +1,50 @@
+.point-top > div {
+  border: 2px solid #ffffff;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+        flex: 1;
+}
+.point-bottom {
+  border: 2px solid #ffffff;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+        flex: 1;
+}
+.point-middle {
+  border: 2px solid #ffffff;
+  -moz-flex: 2;
+  -webkit-flex: 2;
+        flex: 2;
+}
+.number {
+  font-size: 26px;
+  color: yellow;
+}
+.on {
+  background-color: #66CE66;
+  border-bottom: 5px solid #ffffff;
+}
+.off {
+  background-color: #229C22;
+  border-bottom: 1px solid #ffffff;
+}
+.point {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-direction: column;
+}
+.point > div {
+
+}
+.point-top {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -moz-flex: 1;
+  -webkit-flex: 1;
+        flex: 1;
+
+}
